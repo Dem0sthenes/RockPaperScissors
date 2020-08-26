@@ -2,7 +2,57 @@
 <html>
     <body>
         <script>
-            
+
+            function computerPlay() {
+                let outcome = 1+(Math.floor(Math.random() * Math.floor(3)));
+                return outcome;
+            }
+
+            function convertValue(input){
+                let value = "";
+
+                if(input == 1) {
+                    value = "Rock";
+                }
+                else if(input == 2) {
+                    value = "Paper";
+                }
+                else if(input == 3) {
+                    value = "Scissors";
+                }
+                else {
+                    console.log("Something broke...");
+                }
+                return value;
+            }
+
+            function playRound(playerChoice, compChoice) {
+
+                if(playerChoice === compChoice){
+                    console.log("Tie! Both players chose " + convertValue(playerChoice) + "!");
+                }
+                else if(playerChoice === 1 && compChoice === 3) {
+                    console.log("Rock beats Scissors, User wins!");
+                }
+                else if(compChoice === 1 && playerChoice === 3) {
+                    console.log("Rock beats Scissors, Computer wins!");
+                }
+                else if(playerChoice > compChoice) {
+                    console.log(convertValue(playerChoice) + " beats " + convertValue(compChoice) + ", User wins!");
+                }
+                else if(playerChoice < compChoice) {
+                    console.log(convertValue(compChoice) + " beats " + convertValue(playerChoice) + ", Computer wins!");
+                }
+                
+            }
+
+            function game() {
+                    let input = parseInt(prompt("Type 1 for Rock, 2 for Paper, or 3 for Scissors:"));
+                    console.log(input);
+                    let computerChoice = computerPlay();
+                    playRound(input, computerChoice);
+                }
+
         </script>
     </body>
 </html>
